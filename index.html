@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="extjs/jquery/jquery-2.0.3.min.js" ></script>
+    <script type="text/javascript" src="realtouch.js" ></script>
+    <script type="text/javascript" src="app.js" ></script>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"/>
+    <title>realtouch.js test</title>
+  </head>
+  <body>
+    <input id="connect" type="button" value="connect" />
+    <br />
+    <input id="send" type="button" value="send" />
+    <br />
+    <br />
+    <p><b>This will require Firefox 26 or later to run. This also
+    requires bypassing very important security. Do so at your own
+    risk, most likely with this as the only browser tab open. Once
+    done playing with this, completely exit and reopen the
+    browser to clear permissions.</b></p>
+    <ul>
+      <li>Copy the code below.</li>
+      <li>Bring up the "Browser Console" by going to Tools > Developer Tools > Browser Console</li>
+      <li>Paste the code below into the command line and hit enter</li>
+      <li>The "Successfully added..." message should print out</li>
+      <li>After bringing up the Real Touch Agent software, hit the
+      connect button above. The connected application should show up
+      as "realtouch.js"</li>
+      <li>Hit the "Send" button. This should cause the belt to move for 1 second.</li>
+    </ul>
+    <textarea cols=80 rows=15>
+      (function() {
+      var host = 'http://distro.nonpolynomial.com/';
+      var perm = Components.classes['@mozilla.org/permissionmanager;1']
+      .createInstance(Components.interfaces.nsIPermissionManager);
+      var ios = Components.classes['@mozilla.org/network/io-service;1']
+      .getService(Components.interfaces.nsIIOService);
+      var uri = ios.newURI(host, null, null);
+
+      perm.add(uri, 'tcp-socket', 1);
+      return 'Successfully added tcp-socket permissions for ' + host;
+      })();
+    </textarea>
+
+  </body>
+</html>
