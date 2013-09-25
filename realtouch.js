@@ -104,7 +104,7 @@ var RealTouchMozTCPSocketConnector = (function() {
   var cb;
 
   var ondata = function(data) {
-    if(cb) {
+    if (cb) {
       cb(data.data);
     }
   };
